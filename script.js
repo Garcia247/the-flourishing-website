@@ -5,7 +5,7 @@
 
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = 'portraits.css?v=5';
+  css.href = 'portraits.css?v=6';
   document.head.appendChild(css);
 
   // Hero — use the exact approved wide composition as one image.
@@ -13,7 +13,7 @@
   if (heroArt && !heroArt.querySelector('.hero-community-image')) {
     heroArt.classList.add('with-community-image', 'exact-hero-composition');
     const heroImage = document.createElement('img');
-    heroImage.src = 'assets/community-hero.svg?v=5';
+    heroImage.src = 'assets/community-hero.svg?v=6';
     heroImage.alt = 'A small community gathered in thoughtful conversation and shared learning';
     heroImage.className = 'hero-community-image';
     heroImage.loading = 'eager';
