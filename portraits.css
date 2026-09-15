@@ -1,9 +1,17 @@
 /* Editorial portrait system for The Flourishing Community */
 
-/* Hero community image: lived flourishing behind the question card. */
+/* Hero community image: exact wide composition supplied for the hero. */
+.hero .container {
+  width: min(1320px, calc(100% - 40px));
+}
+.hero-grid {
+  grid-template-columns: minmax(0, .88fr) minmax(560px, 1.12fr);
+  gap: 54px;
+}
 .hero-art.with-community-image {
-  min-height: 520px;
-  border-radius: 34px;
+  min-height: 0;
+  aspect-ratio: 900 / 507;
+  border-radius: 30px;
   overflow: hidden;
   background: #dfe8df;
   box-shadow: 0 28px 70px rgba(35,43,35,.12);
@@ -15,41 +23,14 @@
   z-index: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  object-fit: contain;
+  object-position: center;
   filter: none;
   transform: none;
 }
-.hero-art.with-community-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(90deg, rgba(247,245,239,.02) 0%, rgba(247,245,239,0) 48%, rgba(32,40,33,.04) 100%);
-}
-.hero-art.with-community-image .orb { display: none; }
-.hero-art.with-community-image .hero-card { z-index: 3; }
-.hero-art.with-community-image .card-main {
-  right: 20px;
-  top: 105px;
-  width: min(335px, 65%);
-  padding: 30px;
-  background: rgba(255,255,255,.95);
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(255,255,255,.62);
-  box-shadow: 0 24px 60px rgba(25,33,27,.18);
-}
-.hero-art.with-community-image .card-main blockquote { font-size: 29px; }
-.hero-art.with-community-image .card-small {
-  left: auto;
-  right: 28px;
-  bottom: 42px;
-  padding: 15px 19px;
-  background: rgba(255,255,255,.94);
-  backdrop-filter: blur(3px);
-  box-shadow: 0 14px 34px rgba(25,33,27,.14);
-}
+.hero-art.with-community-image::after { display: none; }
+.hero-art.with-community-image .orb,
+.hero-art.with-community-image .hero-card { display: none; }
 
 .story-grid {
   display: grid;
@@ -174,9 +155,21 @@
 .portrait-frame.reveal { transform: translateY(24px) scale(.985); }
 .portrait-frame.reveal.visible { transform: translateY(0) scale(1); }
 
+@media (max-width: 1120px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
 @media (max-width: 900px) {
-  .hero-art.with-community-image { min-height: 500px; }
-  .hero-art.with-community-image .card-main { top: 88px; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-art.with-community-image {
+    width: min(760px, 100%);
+    justify-self: center;
+  }
   .story-grid,
   .framework-intro-grid {
     grid-template-columns: 1fr;
@@ -193,23 +186,10 @@
 }
 
 @media (max-width: 620px) {
+  .hero .container { width: min(100% - 28px, 1320px); }
   .hero-art.with-community-image {
-    min-height: 460px;
-    border-radius: 26px;
-  }
-  .hero-community-image { object-position: center center; }
-  .hero-art.with-community-image .card-main {
-    width: calc(100% - 28px);
-    right: 14px;
-    top: 120px;
-    padding: 28px;
-  }
-  .hero-art.with-community-image .card-main blockquote { font-size: 27px; }
-  .hero-art.with-community-image .card-small {
-    right: 14px;
-    left: 14px;
-    bottom: 24px;
-    justify-content: center;
+    border-radius: 22px;
+    box-shadow: 0 18px 44px rgba(35,43,35,.12);
   }
 
   .portrait-frame { border-radius: 22px; }
