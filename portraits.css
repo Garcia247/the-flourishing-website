@@ -1,0 +1,187 @@
+/* Editorial portrait system for The Flourishing Community */
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, .72fr);
+  gap: 86px;
+  align-items: center;
+}
+.story-copy { max-width: 760px; }
+
+.portrait-frame {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #e7e5de;
+  box-shadow: 0 28px 70px rgba(35,43,35,.13);
+  isolation: isolate;
+}
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 58%, rgba(20,28,23,.16));
+}
+.portrait-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform .8s cubic-bezier(.2,.75,.25,1);
+}
+.portrait-frame.visible img { transform: scale(1.015); }
+.portrait-frame figcaption {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  bottom: 18px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(247,245,239,.92);
+  color: #2d5b47;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+}
+.portrait-about { aspect-ratio: 3 / 4; max-width: 430px; justify-self: end; }
+
+/* Letter: portrait and the editorial paper overlap rather than forming a gallery. */
+.letter-preview.letter-visual {
+  position: relative;
+  min-height: 650px;
+  display: block;
+}
+.letter-visual .portrait-letter {
+  width: 72%;
+  aspect-ratio: 3 / 4;
+  margin-left: auto;
+  border-radius: 30px;
+}
+.letter-visual .paper {
+  position: absolute;
+  z-index: 3;
+  width: min(390px, 72%);
+  min-height: 390px;
+  left: 0;
+  bottom: 4px;
+  padding: 38px 36px;
+  transform: rotate(-1.2deg);
+}
+.letter-visual .paper h3 { margin-top: 42px; font-size: 37px; }
+.letter-visual .paper .rule { margin: 36px 0 14px; }
+
+/* Forum: the event information sits over the portrait like an editorial event poster. */
+.forum-visual {
+  position: relative;
+  min-height: 680px;
+}
+.forum-visual .portrait-forum {
+  width: 74%;
+  aspect-ratio: 3 / 4;
+  margin-left: auto;
+  border-radius: 30px;
+}
+.forum-visual .event-card {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  padding: 36px;
+  border-radius: 26px;
+}
+.forum-visual .event-series { margin-top: 30px; }
+.forum-visual .event-card h3 { font-size: 42px; }
+.forum-visual .event-meta { grid-template-columns: 1fr; gap: 8px; margin: 24px 0; }
+.forum-visual .event-meta span { flex-direction: row; gap: 8px; }
+
+/* Framework: introduce the bigger vision with a quieter institutional portrait. */
+.framework-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, .55fr);
+  gap: 70px;
+  align-items: end;
+  margin-bottom: 46px;
+}
+.framework-intro-grid .section-heading { margin-bottom: 0; }
+.framework-intro-grid .portrait-framework {
+  aspect-ratio: 4 / 5;
+  max-width: 350px;
+  justify-self: end;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 30px 80px rgba(0,0,0,.28);
+}
+.framework-intro-grid .portrait-framework::after {
+  background: linear-gradient(180deg, transparent 55%, rgba(10,16,12,.28));
+}
+
+/* Gentle stagger makes the portraits feel like part of the scroll narrative. */
+.portrait-frame.reveal { transform: translateY(24px) scale(.985); }
+.portrait-frame.reveal.visible { transform: translateY(0) scale(1); }
+
+@media (max-width: 900px) {
+  .story-grid,
+  .framework-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .portrait-about,
+  .framework-intro-grid .portrait-framework {
+    width: min(440px, 86%);
+    justify-self: center;
+  }
+  .letter-preview.letter-visual { min-height: 600px; }
+  .forum-visual { min-height: 650px; }
+  .framework-intro-grid { margin-bottom: 38px; }
+}
+
+@media (max-width: 620px) {
+  .portrait-frame { border-radius: 22px; }
+  .portrait-about,
+  .framework-intro-grid .portrait-framework { width: 100%; }
+
+  .letter-preview.letter-visual {
+    min-height: auto;
+    padding-bottom: 8px;
+  }
+  .letter-visual .portrait-letter {
+    width: 88%;
+    margin-left: auto;
+  }
+  .letter-visual .paper {
+    position: relative;
+    width: 92%;
+    min-height: auto;
+    left: auto;
+    bottom: auto;
+    margin: -88px 0 0;
+    padding: 34px 28px;
+  }
+  .letter-visual .paper h3 { font-size: 34px; }
+
+  .forum-visual {
+    min-height: auto;
+    padding-bottom: 6px;
+  }
+  .forum-visual .portrait-forum {
+    width: 88%;
+    margin-left: auto;
+  }
+  .forum-visual .event-card {
+    position: relative;
+    width: 94%;
+    left: auto;
+    bottom: auto;
+    margin: -80px 0 0;
+    padding: 30px 26px;
+  }
+  .forum-visual .event-card h3 { font-size: 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-frame img { transition: none; }
+  .portrait-frame.reveal { transform: none; }
+}
