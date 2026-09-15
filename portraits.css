@@ -1,4 +1,53 @@
 /* Editorial portrait system for The Flourishing Community */
+
+/* Hero community image: lived flourishing behind the question card. */
+.hero-art.with-community-image {
+  min-height: 520px;
+  border-radius: 34px;
+  overflow: hidden;
+  background: #dfe8df;
+  box-shadow: 0 28px 70px rgba(35,43,35,.12);
+  isolation: isolate;
+}
+.hero-community-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.86) contrast(.95) brightness(.98);
+  transform: scale(1.01);
+}
+.hero-art.with-community-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(247,245,239,.08) 0%, rgba(247,245,239,.03) 38%, rgba(32,40,33,.08) 100%);
+}
+.hero-art.with-community-image .orb { display: none; }
+.hero-art.with-community-image .hero-card { z-index: 3; }
+.hero-art.with-community-image .card-main {
+  right: 18px;
+  top: 96px;
+  width: min(410px, 82%);
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,.56);
+  box-shadow: 0 24px 60px rgba(25,33,27,.20);
+}
+.hero-art.with-community-image .card-small {
+  left: auto;
+  right: 34px;
+  bottom: 48px;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 14px 34px rgba(25,33,27,.16);
+}
+
 .story-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(300px, .72fr);
@@ -123,6 +172,8 @@
 .portrait-frame.reveal.visible { transform: translateY(0) scale(1); }
 
 @media (max-width: 900px) {
+  .hero-art.with-community-image { min-height: 500px; }
+  .hero-art.with-community-image .card-main { top: 88px; }
   .story-grid,
   .framework-intro-grid {
     grid-template-columns: 1fr;
@@ -139,6 +190,25 @@
 }
 
 @media (max-width: 620px) {
+  .hero-art.with-community-image {
+    min-height: 460px;
+    border-radius: 26px;
+  }
+  .hero-community-image { object-position: 43% center; }
+  .hero-art.with-community-image .card-main {
+    width: calc(100% - 28px);
+    right: 14px;
+    top: 120px;
+    padding: 28px;
+  }
+  .hero-art.with-community-image .card-main blockquote { font-size: 27px; }
+  .hero-art.with-community-image .card-small {
+    right: 14px;
+    left: 14px;
+    bottom: 24px;
+    justify-content: center;
+  }
+
   .portrait-frame { border-radius: 22px; }
   .portrait-about,
   .framework-intro-grid .portrait-framework { width: 100%; }
