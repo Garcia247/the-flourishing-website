@@ -5,20 +5,37 @@
 
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = 'portraits.css';
+  css.href = 'portraits.css?v=5';
   document.head.appendChild(css);
 
-  // Hero — community flourishing image sits behind the existing question card.
+  // Hero — use the exact approved wide composition as one image.
   const heroArt = document.querySelector('.hero-art');
   if (heroArt && !heroArt.querySelector('.hero-community-image')) {
-    heroArt.classList.add('with-community-image');
+    heroArt.classList.add('with-community-image', 'exact-hero-composition');
     const heroImage = document.createElement('img');
-    heroImage.src = 'assets/community-hero.svg';
+    heroImage.src = 'assets/community-hero.svg?v=5';
     heroImage.alt = 'A small community gathered in thoughtful conversation and shared learning';
     heroImage.className = 'hero-community-image';
     heroImage.loading = 'eager';
     heroImage.decoding = 'async';
     heroArt.insertBefore(heroImage, heroArt.firstChild);
+
+    // The approved image already contains the question and progression label,
+    // so hide the old HTML overlays to avoid duplication or misalignment.
+    heroArt.querySelectorAll('.hero-card, .orb').forEach((el) => {
+      el.style.display = 'none';
+    });
+
+    heroArt.style.minHeight = '0';
+    heroArt.style.aspectRatio = '16 / 9';
+    heroArt.style.overflow = 'hidden';
+    heroArt.style.borderRadius = '34px';
+    heroImage.style.position = 'absolute';
+    heroImage.style.inset = '0';
+    heroImage.style.width = '100%';
+    heroImage.style.height = '100%';
+    heroImage.style.objectFit = 'cover';
+    heroImage.style.objectPosition = 'center';
   }
 
   const makePortrait = (src, alt, className, caption = '') => {
