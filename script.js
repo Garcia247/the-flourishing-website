@@ -8,6 +8,19 @@
   css.href = 'portraits.css';
   document.head.appendChild(css);
 
+  // Hero — community flourishing image sits behind the existing question card.
+  const heroArt = document.querySelector('.hero-art');
+  if (heroArt && !heroArt.querySelector('.hero-community-image')) {
+    heroArt.classList.add('with-community-image');
+    const heroImage = document.createElement('img');
+    heroImage.src = 'assets/community-hero.svg';
+    heroImage.alt = 'A small community gathered in thoughtful conversation and shared learning';
+    heroImage.className = 'hero-community-image';
+    heroImage.loading = 'eager';
+    heroImage.decoding = 'async';
+    heroArt.insertBefore(heroImage, heroArt.firstChild);
+  }
+
   const makePortrait = (src, alt, className, caption = '') => {
     const figure = document.createElement('figure');
     figure.className = `portrait-frame ${className} reveal`;
