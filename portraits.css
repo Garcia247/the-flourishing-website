@@ -16,9 +16,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  filter: saturate(.86) contrast(.95) brightness(.98);
-  transform: scale(1.01);
+  object-position: center center;
+  filter: none;
+  transform: none;
 }
 .hero-art.with-community-image::after {
   content: "";
@@ -26,26 +26,29 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(247,245,239,.08) 0%, rgba(247,245,239,.03) 38%, rgba(32,40,33,.08) 100%);
+  background: linear-gradient(90deg, rgba(247,245,239,.02) 0%, rgba(247,245,239,0) 48%, rgba(32,40,33,.04) 100%);
 }
 .hero-art.with-community-image .orb { display: none; }
 .hero-art.with-community-image .hero-card { z-index: 3; }
 .hero-art.with-community-image .card-main {
-  right: 18px;
-  top: 96px;
-  width: min(410px, 82%);
-  background: rgba(255,255,255,.94);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255,255,255,.56);
-  box-shadow: 0 24px 60px rgba(25,33,27,.20);
+  right: 20px;
+  top: 105px;
+  width: min(335px, 65%);
+  padding: 30px;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255,255,255,.62);
+  box-shadow: 0 24px 60px rgba(25,33,27,.18);
 }
+.hero-art.with-community-image .card-main blockquote { font-size: 29px; }
 .hero-art.with-community-image .card-small {
   left: auto;
-  right: 34px;
-  bottom: 48px;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 14px 34px rgba(25,33,27,.16);
+  right: 28px;
+  bottom: 42px;
+  padding: 15px 19px;
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 14px 34px rgba(25,33,27,.14);
 }
 
 .story-grid {
@@ -194,7 +197,7 @@
     min-height: 460px;
     border-radius: 26px;
   }
-  .hero-community-image { object-position: 43% center; }
+  .hero-community-image { object-position: center center; }
   .hero-art.with-community-image .card-main {
     width: calc(100% - 28px);
     right: 14px;
