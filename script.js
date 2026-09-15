@@ -2,7 +2,7 @@
 (function () {
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = 'portraits.css?v=10';
+  css.href = 'portraits.css?v=11';
   document.head.appendChild(css);
 
   const style = document.createElement('style');
@@ -17,8 +17,9 @@
     .hero-grid{position:relative;z-index:4;display:block!important;width:min(1480px,calc(100% - 64px))!important;margin-inline:auto!important}
     .hero-copy{position:relative;z-index:5;width:min(500px,39vw);max-width:500px;padding:34px 0 24px}.hero-copy .eyebrow{margin-bottom:23px;font-size:12px;letter-spacing:.22em}.hero h1{max-width:520px;font-size:clamp(66px,6.35vw,106px);line-height:.98;letter-spacing:-.052em}.hero-lead{max-width:485px;margin:32px 0!important;font-size:18px!important;line-height:1.55!important}.hero-actions{gap:24px!important}.hero-actions .btn{min-height:56px;padding-inline:28px!important}.hero .trust-row,.hero .hero-art{display:none!important}
 
-    .editorial-hero-media{position:absolute;z-index:1;right:0;top:50%;width:min(78vw,1490px);aspect-ratio:16/9;transform:translateY(-47%);overflow:hidden;pointer-events:none}
-    .editorial-hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+    .editorial-hero-media{position:absolute;z-index:1;right:0;top:50%;width:min(78vw,1490px);aspect-ratio:16/9;transform:translateY(-47%);overflow:hidden;pointer-events:none;background:#f7f5ef}
+    .editorial-hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .18s ease}
+    .editorial-hero-media.loaded img{opacity:1}
     .editorial-hero-media:before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#f7f5ef 0%,rgba(247,245,239,.99) 8%,rgba(247,245,239,.94) 16%,rgba(247,245,239,.64) 27%,rgba(247,245,239,.18) 39%,rgba(247,245,239,0) 52%)}
     .editorial-hero-media:after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,#f7f5ef 0%,rgba(247,245,239,.82) 7%,rgba(247,245,239,.22) 17%,rgba(247,245,239,0) 28%)}
 
@@ -50,12 +51,15 @@
       media.className = 'editorial-hero-media';
       media.setAttribute('aria-hidden','true');
       const img = document.createElement('img');
-      img.src = 'assets/community-hero-safe.jpg?v=10';
       img.alt = '';
       img.loading = 'eager';
       img.fetchPriority = 'high';
+      img.onload = () => media.classList.add('loaded');
       media.appendChild(img);
       hero.appendChild(media);
+      Promise.all(Array.from({length:6},(_,i)=>fetch(`assets/hero-small-${i}.txt?v=11`).then(r=>{if(!r.ok)throw new Error(`hero chunk ${i}`);return r.text()})))
+        .then(parts=>{ img.src='data:image/jpeg;base64,'+parts.join(''); })
+        .catch(err=>console.error('Hero image load failed',err));
     }
   }
 
