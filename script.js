@@ -84,7 +84,7 @@
       media.className = 'editorial-hero-media';
       media.setAttribute('aria-hidden', 'true');
       const img = document.createElement('img');
-      img.src = 'assets/community-hero.svg?v=8';
+      img.src = 'assets/community-hero.jpg?v=9';
       img.alt = '';
       img.loading = 'eager';
       img.decoding = 'async';
