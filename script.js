@@ -5,7 +5,7 @@
 
   const portraitCss = document.createElement('link');
   portraitCss.rel = 'stylesheet';
-  portraitCss.href = 'portraits.css?v=7';
+  portraitCss.href = 'portraits.css?v=8';
   document.head.appendChild(portraitCss);
 
   const redesign = document.createElement('style');
@@ -84,7 +84,7 @@
       media.className = 'editorial-hero-media';
       media.setAttribute('aria-hidden', 'true');
       const img = document.createElement('img');
-      img.src = 'assets/community-hero.svg?v=7';
+      img.src = 'assets/community-hero.svg?v=8';
       img.alt = '';
       img.loading = 'eager';
       img.decoding = 'async';
