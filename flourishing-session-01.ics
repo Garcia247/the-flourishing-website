@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Flourishing Community//Flourishing Sessions//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:flourishing-session-01-20260929@theflourishing.com.ng
+DTSTAMP:20260921T210000Z
+DTSTART:20260929T180000Z
+DTEND:20260929T193000Z
+SUMMARY:Are You Surviving or Flourishing? — The Flourishing Sessions
+DESCRIPTION:Session 01 of The Flourishing Sessions. Join room: https://theflourishing.com.ng/join
+LOCATION:Online
+URL:https://theflourishing.com.ng/join
+END:VEVENT
+END:VCALENDAR
