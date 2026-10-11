@@ -4,12 +4,12 @@ PRODID:-//The Flourishing Community//Flourishing Sessions//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:flourishing-session-01-20260929@theflourishing.com.ng
-DTSTAMP:20260921T210000Z
-DTSTART:20260929T180000Z
-DTEND:20260929T193000Z
+UID:flourishing-session-01-20261017@theflourishing.com.ng
+DTSTAMP:20261011T123800Z
+DTSTART:20261017T080000Z
+DTEND:20261017T093000Z
 SUMMARY:Are You Surviving or Flourishing? — The Flourishing Sessions
-DESCRIPTION:Session 01 of The Flourishing Sessions. Join room: https://theflourishing.com.ng/join
+DESCRIPTION:Session 01 of The Flourishing Sessions. Saturday 17 October 2026. 8:00 AM Ghana / 9:00 AM Nigeria / 11:00 AM Kenya. Join room: https://theflourishing.com.ng/join
 LOCATION:Online
 URL:https://theflourishing.com.ng/join
 END:VEVENT
